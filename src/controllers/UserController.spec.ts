@@ -29,7 +29,7 @@ describe('UserController', () => {
 	it('Deve retornar erro caso o usuário não informe o name', () => {
 		const mockRequest = {
 			body: {
-				name: 'Karime',
+				name: '',
 				email: 'karime@dio.com',
 			},
 		} as Request;
@@ -37,7 +37,7 @@ describe('UserController', () => {
 		userController.createUser(mockRequest, mockResponse);
 		expect(mockResponse.state.status).toBe(201);
 		expect(mockResponse.state.json).toMatchObject({
-			message: 'Usuário Criado',
+			message: 'bad request! Name e Email Obrigatórios!',
 		});
 	});
 
